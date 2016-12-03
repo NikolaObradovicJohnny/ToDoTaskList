@@ -262,7 +262,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
 //                Intent intent = new Intent(this, SettingsActivity.class);
-
+//
 //                restApi.logout();
 //                startActivity(intent);
                 Toast.makeText(HomeActivity.this,"Logout",Toast.LENGTH_LONG).show();
