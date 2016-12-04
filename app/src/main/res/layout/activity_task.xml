@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24sp"
@@ -13,32 +13,39 @@
         android:textAlignment="center"/>
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/descriptionTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/description"
         android:padding="14dp"/>
 
-    <LinearLayout
-        android:padding="@dimen/fab_margin"
+    <GridLayout
+        android:layout_above="@id/descriptionTV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnDone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Done"
-            android:background="@color/colorPrimary"/>
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
+        android:layout_gravity="left"/>
 
-        <Button
-            android:id="@+id/btnRemove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remove"
-            android:background="@color/colorPrimaryDark"/>
+    <Button
+        android:id="@+id/btnRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginRight="56dp"
+        android:layout_marginEnd="56dp"
+        android:layout_gravity="right"/>
 
-    </LinearLayout>
+
+    </GridLayout>
 
 </LinearLayout>

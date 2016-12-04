@@ -178,10 +178,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(HomeActivity.this,"Klik na task",Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(getApplicationContext(), TaskActivity_.class);
-//                startActivity(intent);
-//                openTaskActivity();
+                Task task = adapter.getItem(position);
+
+                openTaskActivity(task);
+
+                Toast.makeText(HomeActivity.this,"" + adapter.getItem(position).toString() + " ....:" + id,Toast.LENGTH_SHORT).show();
+//
+//                TaskActivity_.intent(getApplicationContext()).extra("idTask",task.getId())
+//                        .extra("titleTask",task.getTitle())
+//                        .extra("descriptionTask",task.getDescription())
+//                        .extra("finishedTask",task.isFinished())
+//                        .startForResult(5);
             }
         });
 
@@ -196,10 +203,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         AddTaskActivity_.intent(this).startForResult(ADD_TASK_REQUEST_CODE);
     }
 
-    void openTaskActivity() {
-        Log.i(TAG, "Open task activity!");
-        TaskActivity_.intent(this).startForResult(0);
+    void openTaskActivity(Task task) {
+        Toast.makeText(HomeActivity.this,"" + task.toString() + " ....:" ,Toast.LENGTH_SHORT).show();
+        TaskActivity_.intent(this)
+                .extra("idTask",task.getId())
+                .extra("titleTask",task.getTitle())
+                .extra("descriptionTask",task.getDescription())
+                .extra("finishedTask",task.isFinished())
+                .startForResult(5);
     }
+
 
     /**
      * Called when the {@link AddTaskActivity AddTaskActivity} finishes.
@@ -266,7 +279,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //                restApi.logout();
 //                startActivity(intent);
                 Toast.makeText(HomeActivity.this,"Logout",Toast.LENGTH_LONG).show();
-//                LoginActivity_.intent(this).start();
+                LoginActivity_.intent(this).start();
                 break;
         }
 
