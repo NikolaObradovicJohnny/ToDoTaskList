@@ -89,12 +89,22 @@ public class TaskActivity extends AppCompatActivity {
     @Click
     void btnRemove(){
         Toast.makeText(this,"CLICK REMOVE",Toast.LENGTH_SHORT).show();
+        Task task = new Task();
+        task.setId(idTask);
+        task.setDescription(descriptionTask);
+        task.setTitle(titleTask);
 
+        deleteTask(task);
     }
 
     @Background
     void updateTask(Task task){
         restApi.updateTaskById(task,(int)idTask);
+    }
+
+    @Background
+    void deleteTask(Task task){
+        restApi.removeTaskById((int)task.getId());
     }
 
 }

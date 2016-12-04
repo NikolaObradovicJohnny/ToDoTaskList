@@ -78,6 +78,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @ViewById(R.id.nav_view)
     NavigationView navigationView;
 
+    @ViewById(R.id.activity_home)
+    DrawerLayout drawerLayout;
+
+//    @ViewById
+//    ActionBarDrawerToggle toggle;
+
     /**
      * {@link FloatingActionButton FloatingActionButton} for starting the
      * {@link AddTaskActivity AddTaskActivity}.
@@ -136,12 +142,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @UiThread
     void initData() {
         setSupportActionBar(toolbar);
+//        setActionBar(toolbar);
 
         listView.setAdapter(adapter);
         adapter.setTasks(tasks);
-
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.activity_home);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
+//
+//        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.activity_home);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
+//        drawerLayout.addDrawerListener(toggle);
+//        toggle.syncState();
+//
+//        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(HomeActivity.this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -287,6 +299,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             dl.closeDrawer(GravityCompat.START);
         }
         return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     @Background

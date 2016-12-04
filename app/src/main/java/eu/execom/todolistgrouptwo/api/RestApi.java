@@ -2,12 +2,14 @@ package eu.execom.todolistgrouptwo.api;
 
 import org.androidannotations.rest.spring.annotations.Accept;
 import org.androidannotations.rest.spring.annotations.Body;
+import org.androidannotations.rest.spring.annotations.Delete;
 import org.androidannotations.rest.spring.annotations.Get;
 import org.androidannotations.rest.spring.annotations.Header;
 import org.androidannotations.rest.spring.annotations.Patch;
 import org.androidannotations.rest.spring.annotations.Path;
 import org.androidannotations.rest.spring.annotations.Post;
 import org.androidannotations.rest.spring.annotations.Put;
+import org.androidannotations.rest.spring.annotations.RequiresAuthentication;
 import org.androidannotations.rest.spring.annotations.Rest;
 import org.androidannotations.rest.spring.api.MediaType;
 import org.springframework.http.converter.FormHttpMessageConverter;
@@ -51,6 +53,10 @@ public interface RestApi {
     @Put(value = "http://androidworkshop.azurewebsites.net/api/todotasks/{id}")
     @Accept(MediaType.APPLICATION_JSON)
     void updateTaskById(@Body Task task, @Path int id);
+
+    @Delete(value = "http://androidworkshop.azurewebsites.net/api/todotasks/{id}")
+    @RequiresAuthentication
+    void removeTaskById(@Path int id);
 
 //    @Get(value = ApiConstants.TASK_PATH + '/')
 //    Task getTaskById(@Body long id);
