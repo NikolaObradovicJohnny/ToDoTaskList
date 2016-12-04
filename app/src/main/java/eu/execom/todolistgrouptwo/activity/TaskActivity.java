@@ -5,8 +5,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+
 import org.androidannotations.annotations.AfterExtras;
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -18,6 +22,7 @@ import org.androidannotations.rest.spring.annotations.RestService;
 import eu.execom.todolistgrouptwo.R;
 import eu.execom.todolistgrouptwo.api.RestApi;
 import eu.execom.todolistgrouptwo.model.Task;
+import eu.execom.todolistgrouptwo.util.NetworkingUtils;
 
 /**
  * Created by Johnny on 12/3/2016.
@@ -46,11 +51,20 @@ public class TaskActivity extends AppCompatActivity {
     @Extra
     boolean finishedTask;
 //
-////    @RestService
-////    RestApi restApi;
+    @RestService
+    RestApi restApi;
 //
+
+//
+//    @AfterViews
+//    void afterViews() {
+//        myRestClient.getEvents("fr", 2011); //Play with it
+//    }
+
     @AfterViews
     void getTask(){
+        Toast.makeText(this,"ID: "+idTask,Toast.LENGTH_SHORT).show();
+
         titleTV.setText(titleTask);
 //        Toast.makeText(this,titleTask.toString(),Toast.LENGTH_SHORT).show();
         descriptionTV.setText(descriptionTask);
@@ -63,14 +77,24 @@ public class TaskActivity extends AppCompatActivity {
 
     @Click
     void btnDone(){
-        Toast.makeText(this,"CLICK FINISHED",Toast.LENGTH_SHORT).show();
+        Task task = new Task();
+        task.setId(idTask);
+        task.setDescription(descriptionTask);
+        task.setTitle(titleTask);
+        task.setFinished(true);
 
+        updateTask(task);
     }
 
     @Click
     void btnRemove(){
         Toast.makeText(this,"CLICK REMOVE",Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Background
+    void updateTask(Task task){
+        restApi.updateTaskById(task,(int)idTask);
     }
 
 }

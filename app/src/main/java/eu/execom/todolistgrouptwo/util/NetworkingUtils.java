@@ -23,4 +23,14 @@ public class NetworkingUtils {
 //        map.set("password",password);
         return map;
     }
+
+    public static LinkedMultiValueMap<String ,String> finishTask(long id, String title,String description){
+        final LinkedMultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+//        map.set("grant_type","password");
+        map.set("id",id+"");
+        map.set("title",title);
+        map.set("description",description);
+        map.set("finished","true");
+        return map;
+    }
 }

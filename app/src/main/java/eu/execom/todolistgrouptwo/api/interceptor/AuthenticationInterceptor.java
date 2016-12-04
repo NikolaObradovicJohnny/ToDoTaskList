@@ -23,6 +23,7 @@ public class AuthenticationInterceptor implements ClientHttpRequestInterceptor {
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
         request.getHeaders().add("Authorization", "bearer " + userPreferences.accessToken().getOr(""));
+//        request.getHeaders().add("Content-type", "application/json");
         return execution.execute(request,body);
     }
 }

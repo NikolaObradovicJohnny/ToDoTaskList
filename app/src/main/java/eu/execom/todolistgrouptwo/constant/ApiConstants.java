@@ -6,7 +6,7 @@ package eu.execom.todolistgrouptwo.constant;
 
 public class ApiConstants {
 
-    public static final String ROOT_URL = "http://androidworkshop.azurewebsites.net/";
+    public static final String ROOT_URL = "http://androidworkshop.azurewebsites.net";
 
     public static final String REGISTER_PATH = "/api/account/register";
 
