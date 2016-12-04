@@ -43,7 +43,9 @@ import eu.execom.todolistgrouptwo.database.wrapper.TaskDAOWrapper;
 import eu.execom.todolistgrouptwo.database.wrapper.UserDAOWrapper;
 import eu.execom.todolistgrouptwo.model.Task;
 import eu.execom.todolistgrouptwo.model.User;
+import eu.execom.todolistgrouptwo.model.dto.TokenContainerDTO;
 import eu.execom.todolistgrouptwo.preference.UserPreferences_;
+import eu.execom.todolistgrouptwo.util.NetworkingUtils;
 
 /**
  * Home {@link AppCompatActivity Activity} for navigation and listing all tasks.
@@ -181,14 +183,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Task task = adapter.getItem(position);
 
                 openTaskActivity(task);
-
-                Toast.makeText(HomeActivity.this,"" + adapter.getItem(position).toString() + " ....:" + id,Toast.LENGTH_SHORT).show();
-//
-//                TaskActivity_.intent(getApplicationContext()).extra("idTask",task.getId())
-//                        .extra("titleTask",task.getTitle())
-//                        .extra("descriptionTask",task.getDescription())
-//                        .extra("finishedTask",task.isFinished())
-//                        .startForResult(5);
             }
         });
 
@@ -204,7 +198,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     void openTaskActivity(Task task) {
-        Toast.makeText(HomeActivity.this,"" + task.toString() + " ....:" ,Toast.LENGTH_SHORT).show();
         TaskActivity_.intent(this)
                 .extra("idTask",task.getId())
                 .extra("titleTask",task.getTitle())
@@ -274,12 +267,31 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(HomeActivity.this,"Settings",Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_logout:
-//                Intent intent = new Intent(this, SettingsActivity.class);
-//
-//                restApi.logout();
-//                startActivity(intent);
                 Toast.makeText(HomeActivity.this,"Logout",Toast.LENGTH_LONG).show();
-                LoginActivity_.intent(this).start();
+//                restApi.logout();
+
+                try {
+                    userPreferences.accessToken().remove();
+                    userPreferences.userId().remove();
+//                    final TokenContainerDTO tokenContainerDTO =
+//                            restApi.logout();
+
+//                    userPreferences.accessToken().put("");
+
+//                    LoginActivity_.intent(this)//.startForResult(RESULT_OK);
+//                    .start();
+//                setResult(RESULT_OK, intent);
+                    finish();
+
+                } catch (Exception e) {
+                    Log.e(TAG, e.getMessage(), e);
+                }
+
+//                LoginActivity_.intent(this).extra("token",tokenContainerDTO.getAccessToken()).startForResult(RESULT_OK);
+////                setResult(RESULT_OK, intent);
+//                finish();
+//                LoginActivity_.intent(this)//.startForResult(RESULT_OK);
+//                        .start();
                 break;
         }
 
