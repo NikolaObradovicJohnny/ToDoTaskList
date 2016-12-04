@@ -72,6 +72,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private User user;
 
+    ActionBarDrawerToggle toggle;
+
     @ViewById(R.id.toolbar)
     Toolbar toolbar;
 
@@ -153,7 +155,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //        toggle.syncState();
 //
 //        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(HomeActivity.this,drawerLayout,R.string.open,R.string.close);
+        toggle = new ActionBarDrawerToggle(HomeActivity.this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -303,6 +305,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        } else if(id == R.id.nav_home){
+//            Intent intent = new Intent(this, SettingsActivity.class);
+
+//            startActivity(intent);
+//            return true;
+        } else if (id== R.id.nav_logout){
+            Toast.makeText(this, ". . . LOGOUT . . . ", Toast.LENGTH_LONG).show();
+            tryLogout();
+            finish();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

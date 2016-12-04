@@ -16,6 +16,15 @@ public class NetworkingUtils {
         return map;
     }
 
+    public static LinkedMultiValueMap<String ,String> registerUserCredentials(String email, String password, String confirmPassword){
+        final LinkedMultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+        map.set("grant_type","password");
+        map.set("email",email);
+        map.set("password",password);
+        map.set("confirmPassword",password);
+        return map;
+    }
+
     public static LinkedMultiValueMap<String ,String> unpackUserCredentials(){
         final LinkedMultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 //        map.set("grant_type","password");
