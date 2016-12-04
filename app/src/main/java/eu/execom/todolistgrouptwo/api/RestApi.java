@@ -34,7 +34,7 @@ public interface RestApi {
     @Post(value = ApiConstants.LOGIN_PATH)
     TokenContainerDTO login(@Body LinkedMultiValueMap<String, String> accountInfo);
 
-    @Post(value = ApiConstants.LOGOUT_PATH)
+    @Post(value = "http://androidworkshop.azurewebsites.net/api/account/logout")
     void logout();
 
     @Get(value = ApiConstants.TASK_PATH)

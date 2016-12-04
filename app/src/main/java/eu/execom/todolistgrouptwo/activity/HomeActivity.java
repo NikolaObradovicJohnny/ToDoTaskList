@@ -262,35 +262,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_settings:
 //                Intent intent = new Intent(this, SettingsActivity.class);
-
 //                startActivity(intent);
                 Toast.makeText(HomeActivity.this,"Settings",Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_logout:
                 Toast.makeText(HomeActivity.this,"Logout",Toast.LENGTH_LONG).show();
-//                restApi.logout();
 
                 try {
-                    userPreferences.accessToken().remove();
-                    userPreferences.userId().remove();
-//                    final TokenContainerDTO tokenContainerDTO =
-//                            restApi.logout();
-
-//                    userPreferences.accessToken().put("");
-
-//                    LoginActivity_.intent(this)//.startForResult(RESULT_OK);
-//                    .start();
-//                setResult(RESULT_OK, intent);
-                    finish();
-
+//                    userPreferences.accessToken().remove();
+//                    userPreferences.userId().remove();
+                    tryLogout();
                 } catch (Exception e) {
                     Log.e(TAG, e.getMessage(), e);
                 }
-
 //                LoginActivity_.intent(this).extra("token",tokenContainerDTO.getAccessToken()).startForResult(RESULT_OK);
 ////                setResult(RESULT_OK, intent);
-//                finish();
-//                LoginActivity_.intent(this)//.startForResult(RESULT_OK);
+                finish();
 //                        .start();
                 break;
         }
@@ -300,6 +287,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             dl.closeDrawer(GravityCompat.START);
         }
         return false;
+    }
+
+    @Background
+    void tryLogout(){
+        restApi.logout();
+        userPreferences.accessToken().remove();
+        userPreferences.userId().remove();
+//        LoginActivity_.intent(this).startForResult(RESULT_OK);
     }
 
 }
