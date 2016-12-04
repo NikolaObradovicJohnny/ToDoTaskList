@@ -12,8 +12,8 @@ public class User {
     @DatabaseField(generatedId = true)
     private long id;
 
-    @DatabaseField(canBeNull = false)
-    private String name;
+//    @DatabaseField(canBeNull = false)
+//    private String name;
 
     @DatabaseField(canBeNull = false, unique = true)
     private String username;
@@ -27,8 +27,13 @@ public class User {
     public User() {
     }
 
-    public User(String name, String username, String password) {
-        this.name = name;
+//    public User(String name, String username, String password) {
+//        this.name = name;
+//        this.username = username;
+//        this.password = password;
+//    }
+
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -38,7 +43,7 @@ public class User {
         return "User{" +
                 "password='" + password + '\'' +
                 ", username='" + username + '\'' +
-                ", name='" + name + '\'' +
+//                ", name='" + name + '\'' +
                 ", id=" + id +
                 '}';
     }
@@ -50,14 +55,14 @@ public class User {
     public void setId(long id) {
         this.id = id;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public String getUsername() {
         return username;

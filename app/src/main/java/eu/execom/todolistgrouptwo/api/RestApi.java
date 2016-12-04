@@ -23,6 +23,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import eu.execom.todolistgrouptwo.api.interceptor.AuthenticationInterceptor;
 import eu.execom.todolistgrouptwo.constant.ApiConstants;
 import eu.execom.todolistgrouptwo.model.Task;
+import eu.execom.todolistgrouptwo.model.User;
 import eu.execom.todolistgrouptwo.model.dto.TokenContainerDTO;
 
 /**

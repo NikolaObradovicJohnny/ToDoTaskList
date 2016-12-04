@@ -32,22 +32,31 @@ public class RegisterActivity extends AppCompatActivity {
     @ViewById
     EditText password;
 
+    @ViewById
+    EditText confirmPassword;
+
+
     @EditorAction(R.id.password)
     @Click
     void register() {
         final String name = this.name.getText().toString();
         final String username = this.username.getText().toString();
         final String password = this.password.getText().toString();
-        final User user = new User(name, username, password);
+        final String confirmPassword = this.confirmPassword.getText().toString();
+        if (password.equals(confirmPassword)) {
+//            final User user = new User(name, username, password);
+            final User user = new User(username, password);
 
-        registerUser(user);
+            registerUser(user);
+        }
     }
 
     @Background
     void registerUser(User user) {
-        final boolean userCreated = userDAOWrapper.create(user);
+//        final boolean userCreated = userDAOWrapper.create(user);
+        final User userCreated = userDAOWrapper.create(user);
 
-        if (userCreated) {
+        if (userCreated != null) {
             login(user);
         } else {
             showRegisterError();
