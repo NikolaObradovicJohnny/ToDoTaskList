@@ -23,14 +23,6 @@ public class UserDAOWrapper {
         return userDAO.findByUsernameAndPassword(username, password);
     }
 
-//    public boolean create(User user) {
-//        if (userDAO.findByUsername(user.getUsername()) != null) {
-//            return false;
-//        }
-//        userDAO.create(user);
-//        return true;
-//    }
-
     public User create(User user) {
         restApi.register(NetworkingUtils.registerUserCredentials(user.getUsername(),user.getPassword(),user.getPassword()));
         return user;

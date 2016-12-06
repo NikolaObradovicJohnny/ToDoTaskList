@@ -1,7 +1,7 @@
 package eu.execom.todolistgrouptwo.constant;
 
 /**
- * Created by Jovana Protic on 27-Nov-16.
+ * Created by Nikola Obradovic on 27-Nov-16.
  */
 
 public class ApiConstants {

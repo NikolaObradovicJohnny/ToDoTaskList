@@ -3,7 +3,7 @@ package eu.execom.todolistgrouptwo.util;
 import org.springframework.util.LinkedMultiValueMap;
 
 /**
- * Created by Jovana Protic on 27-Nov-16.
+ * Created by Nikola Obradovic on 27-Nov-16.
  */
 
 public class NetworkingUtils {
@@ -27,9 +27,6 @@ public class NetworkingUtils {
 
     public static LinkedMultiValueMap<String ,String> unpackUserCredentials(){
         final LinkedMultiValueMap<String,String> map = new LinkedMultiValueMap<>();
-//        map.set("grant_type","password");
-//        map.set("username",email);
-//        map.set("password",password);
         return map;
     }
 

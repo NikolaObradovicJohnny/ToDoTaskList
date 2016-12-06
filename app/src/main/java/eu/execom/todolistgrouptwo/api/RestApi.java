@@ -27,7 +27,7 @@ import eu.execom.todolistgrouptwo.model.User;
 import eu.execom.todolistgrouptwo.model.dto.TokenContainerDTO;
 
 /**
- * Created by Jovana Protic on 27-Nov-16.
+ * Created by Nikola Obradovic on 27-Nov-16.
  */
 @Rest(rootUrl = ApiConstants.ROOT_URL, converters = {GsonHttpMessageConverter.class,
         FormHttpMessageConverter.class}, interceptors = AuthenticationInterceptor.class)
@@ -50,21 +50,12 @@ public interface RestApi {
     @Post(value = ApiConstants.TASK_PATH)
     Task createTask(@Body Task task);
 
-//    @Header(name = "Content-Type", value = "application/x-www-form-urlencoded")
-//    @Put(value = ApiConstants.TASK_PATH + "/{id}")
-//    Task updateTask(@Body Task task, @Path long id);
-
-//    @Header(name = "Content-Type", value = "application/json")
     @Put(value = "http://androidworkshop.azurewebsites.net/api/todotasks/{id}")
     @Accept(MediaType.APPLICATION_JSON)
     void updateTaskById(@Body Task task, @Path int id);
 
     @Delete(value = "http://androidworkshop.azurewebsites.net/api/todotasks/{id}")
-    @RequiresAuthentication
+//    @RequiresAuthentication
     void removeTaskById(@Path int id);
-
-//    @Get(value = ApiConstants.TASK_PATH + '/')
-//    Task getTaskById(@Body long id);
-
 
 }

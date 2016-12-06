@@ -148,13 +148,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         listView.setAdapter(adapter);
         adapter.setTasks(tasks);
-//
-//        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.activity_home);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
-//        drawerLayout.addDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+
         toggle = new ActionBarDrawerToggle(HomeActivity.this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -267,32 +261,24 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_home:
-//                Intent intentHome = new Intent(this,RestaurantsActivity.class);
-//                startActivity(intentHome);
                 Toast.makeText(HomeActivity.this,"About",Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_refresh:
                 Toast.makeText(HomeActivity.this,"Refresh",Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_settings:
-//                Intent intent = new Intent(this, SettingsActivity.class);
-//                startActivity(intent);
                 Toast.makeText(HomeActivity.this,"Settings",Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_logout:
                 Toast.makeText(HomeActivity.this,"Logout",Toast.LENGTH_LONG).show();
 
                 try {
-//                    userPreferences.accessToken().remove();
-//                    userPreferences.userId().remove();
                     tryLogout();
                 } catch (Exception e) {
                     Log.e(TAG, e.getMessage(), e);
                 }
-//                LoginActivity_.intent(this).extra("token",tokenContainerDTO.getAccessToken()).startForResult(RESULT_OK);
-////                setResult(RESULT_OK, intent);
                 finish();
-//                        .start();
+
                 break;
         }
 
@@ -310,10 +296,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (toggle.onOptionsItemSelected(item)) {
             return true;
         } else if(id == R.id.nav_home){
-//            Intent intent = new Intent(this, SettingsActivity.class);
-
-//            startActivity(intent);
-//            return true;
+            Toast.makeText(this, ". . . Ovaj klik nije implementiran . . . ", Toast.LENGTH_LONG).show();
         } else if (id== R.id.nav_logout){
             Toast.makeText(this, ". . . LOGOUT . . . ", Toast.LENGTH_LONG).show();
             tryLogout();

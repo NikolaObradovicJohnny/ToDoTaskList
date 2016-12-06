@@ -30,9 +30,6 @@ import eu.execom.todolistgrouptwo.util.NetworkingUtils;
 @EActivity(R.layout.activity_task)
 public class TaskActivity extends AppCompatActivity {
 
-//    @Bean
-//    Task task;
-//
     @ViewById(R.id.titleTV)
     TextView titleTV;
 
@@ -53,13 +50,6 @@ public class TaskActivity extends AppCompatActivity {
 //
     @RestService
     RestApi restApi;
-//
-
-//
-//    @AfterViews
-//    void afterViews() {
-//        myRestClient.getEvents("fr", 2011); //Play with it
-//    }
 
     @AfterViews
     void getTask(){

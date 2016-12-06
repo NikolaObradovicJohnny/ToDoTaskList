@@ -65,13 +65,6 @@ public class LoginActivity extends AppCompatActivity {
             showLoginError();
             Log.e(TAG, e.getMessage(), e);
         }
-        /*
-        if (user == null) {
-            showLoginError();
-        } else {
-            loginSuccess(user.getId());
-        }
-        */
     }
 
     @UiThread
